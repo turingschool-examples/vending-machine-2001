@@ -20,9 +20,9 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
     visit machine_path(dons)
 
     within('#snacks') do
-      expect(page).to have_content(white_castle.name)
-      expect(page).to have_content(pop_rocks.name)
-      expect(page).to have_content(hot_cheetos.name)
+      expect(page).to have_content("#{white_castle.name}: $3.50")
+      expect(page).to have_content("#{pop_rocks.name}: $1.50")
+      expect(page).to have_content("#{hot_cheetos.name}: $2.50")
     end
   end
 
@@ -34,7 +34,8 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
     hot_cheetos = dons.snacks.create(name: "Flaming Hot Cheetos", price: 2.5)
 
     visit machine_path(dons)
-    
+    save_and_open_page
+
     within('#statistics') do
       expect(page).to have_content("Average Price: $2.50")
     end
