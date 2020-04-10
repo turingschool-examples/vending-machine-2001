@@ -6,3 +6,7 @@
     <%= '%.2f' % snack.price.round(2) %>
   </section>
 <% end %>
+
+<section id="average">
+  <%= '%.2f' % @machine.average_snack_price.to_f.round(2) %>
+</section>
