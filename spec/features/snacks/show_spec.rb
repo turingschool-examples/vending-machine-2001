@@ -4,13 +4,13 @@ RSpec.describe "When I visit a snack show page", type: :feature do
   before(:each) do
     sam = Owner.create(name: "Sam's Snacks")
     
-    machine1 = sam.machines.create(location: "Don's Mixed Drinks")
-    machine2 = sam.machines.create(location: "Turing Basement")
+    @machine1 = sam.machines.create(location: "Don's Mixed Drinks")
+    @machine2 = sam.machines.create(location: "Turing Basement")
     @snack1 = Snack.create!(name: "M&Ms", price: 1.00)
     @snack2 = Snack.create!(name: "Jerkey", price: 3.00)
 
-    MachineSnack.create!(machine_id: machine1.id, snack_id: @snack1.id)
-    MachineSnack.create!(machine_id: machine1.id, snack_id: @snack2.id)
+    MachineSnack.create!(machine_id: @machine1.id, snack_id: @snack1.id)
+    MachineSnack.create!(machine_id: @machine2.id, snack_id: @snack1.id)
 
     visit "/snacks/#{@snack1.id}"
   end
@@ -24,7 +24,13 @@ RSpec.describe "When I visit a snack show page", type: :feature do
   end
   
   it "I see list of locations with vending machines that carry that snack" do
-
+    within "#machine-#{@machine1.id}" do
+      expect(page).to have_content(@machine1.location)
+    end
+    
+    within "#machine-#{@machine2.id}" do
+      expect(page).to have_content(@machine2.location)
+    end
   end
   
   it "I see avg price of snacks in aech of those machines that carry that snack" do

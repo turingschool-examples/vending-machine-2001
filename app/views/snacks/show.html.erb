@@ -2,3 +2,12 @@
   <h1><%= @snack.name %></h1>
   <p><%= @snack.price %></p>
 </section>
+
+<% @snack.machines.each do |machine|%>
+  <section id="machine-<%=machine.id%>">
+    <p><%= machine.location %></p>
+  </section>
+<% end %>
+
+
+ 
