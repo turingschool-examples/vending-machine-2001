@@ -20,7 +20,6 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
       dons.machine_snacks.create(machine_id: dons.id, snack_id: reeses.id, price:reeses.price, quantity:5)
 
       visit machine_path(dons)
-      save_and_open_page
 
       within '.snacks-index' do
         expect(page).to have_content(twix.name)
@@ -37,6 +36,12 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
       reeses = Snack.create(name: 'Reeses', price: 3, owner_id: owner.id)
       dons.machine_snacks.create(machine_id: dons.id, snack_id: twix.id, price:twix.price, quantity:3)
       dons.machine_snacks.create(machine_id: dons.id, snack_id: reeses.id, price:reeses.price, quantity:5)
+
+      visit machine_path(dons)
+
+      within('.machine-stats') do
+        expect(page).to have_content("Average Price of All Snacks: $2.50")
+      end
     end
   end
 end
