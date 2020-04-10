@@ -13,8 +13,19 @@ RSpec.describe 'When a user visits a snack show page', type: :feature do
 
     expect(page).to have_content(penut_mms.name)
     expect(page).to have_content(penut_mms.price)
+    
     within 'section.snack-locations' do
       expect(page).to have_content("#{dons.location} (1 kinds of snacks, average price of $100.85)")
+      expect(page).to_not have_content(snod.location)     
+    end
+
+    tacos = Snack.create(name: "Street Taco", price: "8.40")
+    dons.snacks << tacos
+
+    visit snack_path(penut_mms)
+
+    within 'section.snack-locations' do
+      expect(page).to have_content("#{dons.location} (2 kinds of snacks, average price of $#{dons.average_snack_price})")
       expect(page).to_not have_content(snod.location)     
     end
 
