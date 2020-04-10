@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :machines, only: [:show]
+
+  resouces :snacks, only: [:show]
+
 end
