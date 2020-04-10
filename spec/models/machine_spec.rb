@@ -4,6 +4,8 @@ RSpec.describe Machine, type: :model do
   describe 'validations' do
     it { should validate_presence_of :location }
     it { should belong_to :owner }
+    it { should have_many :machine_snacks }
+    it { should have_many(:snacks).through(:machine_snacks) }
 
     it "has a valid factory" do
       expect(build(:machine)).to be_valid
@@ -25,7 +27,7 @@ RSpec.describe Machine, type: :model do
 
 
       expect(dons.average_snack_price.to_i).to eq(5)
-      expect(dons.snack_counter).to eq(4)  
+      expect(dons.snack_counter).to eq(4)
     end
   end
 end
