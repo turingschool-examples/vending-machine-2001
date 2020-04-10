@@ -9,4 +9,7 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
 
     expect(page).to have_content("Don's Mixed Drinks Vending Machine")
   end
+
+  it "I see the name of all of the snacks associated with that vending machine along with their price" do 
+  end
 end
