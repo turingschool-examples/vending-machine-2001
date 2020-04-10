@@ -22,8 +22,3 @@ RSpec.describe "when I visit a machines show page", type: :feature do
 
   end
 end
-
-​
-# As a visitor
-# When I visit a vending machine show page
-# I see the name of all of the snacks associated with that vending machine along with their price
