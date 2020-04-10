@@ -5,5 +5,8 @@
   <%= snack.name %>: <%= number_to_currency(snack.price) %></br>
 <% end %>
 
-<h2>Average price for all snacks in this machine:</h2>
+<section class="average_price">
+  <h2>Average price for all snacks in this machine:</h2>
+  <%= number_to_currency(@machine.average_price) %>
+</section>
 
