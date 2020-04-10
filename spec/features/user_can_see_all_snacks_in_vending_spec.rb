@@ -22,7 +22,7 @@ RSpec.describe "When a user visits the vending machine show page", type: :featur
 
     visit machine_path(dons)
 
-    expect(page).to have_content("Average price: $2.50")
+    expect(page).to have_content("Average Price: $2.50")
 
   end
 end
