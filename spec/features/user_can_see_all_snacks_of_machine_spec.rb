@@ -28,5 +28,9 @@ describe 'When I visit /machines/:id'
       expect(page).to have_content("$2.50")
     end
   end
+  it 'I see an average price of all snacks in the machine' do
+    visit "/machines/#{@machine.id}"
+    expect(page).to have_content("Average Price: 1.67")
+  end
 
 end
