@@ -1,0 +1,34 @@
+require 'rails_helper'
+
+RSpec.describe 'When a user visits a snack show page', type: :feature do
+  it 'they see snack name & price' do
+    owner = Owner.create(name: "Sam's Snacks")
+    dons  = owner.machines.create(location: "Don's Mixed Drinks")
+    snack_1_a = dons.snacks.create(name: "peanuts", price: 1.00)
+    snack_2_a = dons.snacks.create(name: "granola bar", price: 1.50)
+    snack_3_a = dons.snacks.create(name: "candy", price: 1.25)
+
+    bars  = owner.machines.create(location: "Bright's New Drinks")
+    snack_1_b = bars.snacks.create(name: "peanuts", price: 1.00)
+    snack_2_a = bars.snacks.create(name: "granola bar", price: 1.50)
+    snack_3_a = bars.snacks.create(name: "candy", price: 1.25)
+
+    @average_snacks = dons.snacks.sum {|snack| snack.price } / dons.snacks.length
+
+    visit snack_path(snack_1)
+
+    expect(page).to have_content("#{snack_1.name}")
+
+    within(".snack-main-block") do
+      expect(page).to have_content(snack_1.name)
+      expect(page).to have_content(snack_1.price)
+    end
+  end
+
+  it 'And a list of locations,
+      average price for snacks,
+      a count of the different kinds of items in that vending machine' do
+
+      expect(what?).to have_what?()
+  end
+end
