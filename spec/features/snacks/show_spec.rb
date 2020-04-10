@@ -49,19 +49,36 @@ RSpec.describe "As a visitor" do
       MachineSnack.create!(machine: dons, snack: cranpineapple)
 
       visit snack_path(crangrape)
+      within "#machine-#{dons.id}" do 
+        expect(page).to have_content("Average Snack Price: $1.50")
+      end
 
-      expect(page).to have_content("$1.50")
+      within "#machine-#{dans.id}" do 
+        expect(page).to have_content("Average Snack Price: $1.50")
+      end
     end
 
-    xit "then I see the count for all different kinds of snacks in that vending machine." do 
+    it "then I see the count for all different kinds of snacks in that vending machine." do 
+      owner = Owner.create!(name: "Sam's Snacks")
+      dons  = owner.machines.create!(location: "Don's Mixed Drinks")
+      dans  = owner.machines.create!(location: "Dan's Vending Machines")
+      cranapple = Snack.create!(name: "Cranapple", price: 1.00)
+      crangrape = Snack.create!(name: "Crangrape", price: 1.50)
+      cranpineapple = Snack.create!(name: "Cranpineapple", price: 2.00)
+      MachineSnack.create!(machine: dons, snack: cranapple)
+      MachineSnack.create!(machine: dons, snack: crangrape)
+      MachineSnack.create!(machine: dans, snack: crangrape)
+      MachineSnack.create!(machine: dons, snack: cranpineapple)
+
+      visit snack_path(crangrape)
+      
+      within "#machine-#{dons.id}" do 
+        expect(page).to have_content("Number of Snacks in Machine: 3")
+      end
+
+      within "#machine-#{dans.id}" do 
+        expect(page).to have_content("Number of Snacks in Machine: 1")
+      end
     end
   end
 end
-
-# As a visitor
-# When I visit a snack show page
-# I see the name of that snack
-#   and I see the price for that snack
-#   and I see a list of locations with vending machines that carry that snack
-#   and I see the average price for snacks in those vending machines
-#   and I see a count of the different kinds of items in that vending machine.

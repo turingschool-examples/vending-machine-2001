@@ -3,5 +3,8 @@
 
 Vending Machine locations with this snack:
 <% @snack.machines.each do |machine| %>
+  <section id="machine-<%= machine.id %>">
   <%= machine.location %></br>
+  Average Snack Price: <%= number_to_currency(machine.average_price) %></br>
+  Number of Snacks in Machine: <%= machine.snacks.count %>
 <% end %>
