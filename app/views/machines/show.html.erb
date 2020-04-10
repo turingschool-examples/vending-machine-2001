@@ -1,1 +1,8 @@
 <h1><%= @machine.location %> Vending Machine</h1>
+
+<section class="snacks-index">
+  <% @machine.snacks.each do |snack| %>
+    <p><%= snack.name %></p>
+    <p><%= snack.price %></p>
+    <% end %>
+</section>
