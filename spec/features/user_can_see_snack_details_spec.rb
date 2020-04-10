@@ -11,10 +11,9 @@ RSpec.describe "When a user visits a snack show page", type: :feature do
                                 price: 1.50)
     cheetos = dons.snacks.create!(name: "Flaming Hot Cheetos",
                                 price: 2.50)
-    cheetos = turing.snacks.create!(name: "Flaming Hot Cheetos",
-                                    price: 2.50)
-    poprocks = turing.snacks.create!(name: "Pop Rocks",
-                                      price: "1.50")
+
+    SnackMachine.create!(snack: cheetos, machine: turing)
+    SnackMachine.create!(snack: poprocks, machine: turing)                                   
 
     visit "/snacks/#{cheetos.id}"
 
@@ -24,4 +23,4 @@ RSpec.describe "When a user visits a snack show page", type: :feature do
     expect(page).to have_content("Don's Mixed Drinks (3 kinds of snacks, average price of $2.50)")
     expect(page).to have_content("Turing Basement (2 kinds of snacks, average price of $2.00)")
   end
-end 
+end
