@@ -1,0 +1,13 @@
+<h1><%= @snack.name %></h1>
+<br>
+<p><%= "Price: #{@snack.display_price}" %>
+<h4>Locations</h4>
+<section>
+  <% @snack.machines.each do |machine| %>
+    <div id= <%= "location_#{machine.id}" %>>
+      ("Union Station (3 kinds of snacks, average price of $2.50)
+      <%= "#{machine.location} (#{pluralize(machine.snack_count, 'kind')} of snacks, average price of #{machine.display_average_snack_price})" %>
+      <br>
+    </div>
+  <% end %>
+</section>

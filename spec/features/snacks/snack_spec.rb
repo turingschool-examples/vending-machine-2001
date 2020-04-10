@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Machines-", type: :feature do
+RSpec.describe "Snacks-", type: :feature do
   before (:each) do
     @sam = Owner.create(name: "Sam's Snacks")
     @machine_1 = Machine.create(owner_id: @sam.id, location: "Union Station")
@@ -16,28 +16,16 @@ RSpec.describe "Machines-", type: :feature do
     MachineSnack.create(machine_id: @machine_2.id, snack_id: @snack_1.id)
   end
   describe "As a User when I visit the show page I " do
-    it "can see the name/price of all snacks associated with that vending machine" do
-      visit "machines/#{@machine_1.id}"
-      within "##{@snack_1.id}" do
-        expect(page).to have_content(@snack_1.name)
-        expect(page).to have_content(@snack_1.price)
-      end
+    it "can see the name, price, locations, avg price, and item count" do
+        visit "/snacks/#{@snack_1.id}"
 
-      within "##{@snack_2.id}" do
-        expect(page).to have_content(@snack_2.name)
-        expect(page).to have_content(@snack_2.price)
-      end
-
-      within "##{@snack_3.id}" do
-        expect(page).to have_content(@snack_3.name)
-        expect(page).to have_content(@snack_3.price)
-      end
-    end
-
-    it "can see the average price of all snacks in that machine" do
-      visit "machines/#{@machine_1.id}"
-
-      expect(page).to have_content("Average Snack Price: $2.50")
+        expect(page).to have_content("Price: $3.50")
+        within "#location_#{@machine_1.id}" do
+          expect(page).to have_content("Union Station (3 kinds of snacks, average price of $2.50)")
+        end
+        within "#location_#{@machine_2.id}" do
+          expect(page).to have_content("Larimer Square (1 kind of snacks, average price of $3.50)")
+        end
     end
   end
 end

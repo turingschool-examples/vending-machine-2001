@@ -13,4 +13,8 @@ class Machine < ApplicationRecord
       "$#{sprintf('%.2f', average_snack_price)}"
     end
   end
+
+  def snack_count
+    snacks.count
+  end
 end
