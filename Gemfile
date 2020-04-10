@@ -14,6 +14,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 
+gem 'money-rails', '~>1.12'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
