@@ -1,4 +1,4 @@
-require 'rails_helper'
+"require 'rails_helper'
 
 RSpec.describe 'When a user visits a vending machine show page', type: :feature do
   context 'they see an average price of all the snacks associated with that machine' do
@@ -30,3 +30,4 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
     end
   end
 end
+"
