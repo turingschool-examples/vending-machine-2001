@@ -26,7 +26,7 @@ RSpec.describe "As a visitor" do
       end
 
       expect(page).to have_content("My Apartment (2 kinds of snacks, average price of $1.25)")
-      expect(page).to have_content("Turing Basement (2 kinds of snacks, average price of $1.50)")
+      expect(page).to have_content("Turing Basement (2 kinds of snacks, average price of $1.75)")
     end
   end
 end
