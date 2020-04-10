@@ -11,14 +11,14 @@ RSpec.describe "As a visitor" do
       snack_2 = machine.snacks.create( name: "Milky Way",
                             price: 1.00)
 
-      visit machine_path(machine)
+      visit "/machines/#{machine.id}"
 
-      within "snack-#{snack_1.id}" do
+      within "#snack-#{snack_1.id}" do
         expect(page).to have_content("Snickers")
         expect(page).to have_content("1.50")
       end
 
-      within "snack-#{snack_1.id}" do
+      within "#snack-#{snack_2.id}" do
         expect(page).to have_content("Milky Way")
         expect(page).to have_content("1.00")
       end
