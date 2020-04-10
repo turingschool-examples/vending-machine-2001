@@ -4,6 +4,7 @@ RSpec.describe 'Vending machines show page' do
     before(:each) do
         @owner = Owner.create!(name: "John Preston")
         @machine1 = @owner.machines.create!(location: "Don's Mixed Drinks")
+        @machine2 = @owner.machines.create!(location: "Turing Basement")
         @doritos = Snack.create!(name: "Doritos", price: 2.0)
         @cheetos = Snack.create!(name: 'Cheetos', price: 3.0)
         @donuts = Snack.create!(name: 'DoNuts', price: 4.0)
@@ -13,9 +14,12 @@ RSpec.describe 'Vending machines show page' do
         MachineSnack.create!(machine: @machine1, snack: @cheetos)
         MachineSnack.create!(machine: @machine1, snack: @donuts)
         MachineSnack.create!(machine: @machine1, snack: @snickers)
+        MachineSnack.create!(machine: @machine2, snack: @doritos)
     end
 
+   
     it "can show all machine snacks" do
+
        visit "/machines/#{@machine1.id}"
        expect(page).to have_content("Don's Mixed Drinks") 
         within "#machine-snack-#{@doritos.id}" do
@@ -45,24 +49,20 @@ RSpec.describe 'Vending machines show page' do
             expect(page).to have_content('$ 3.00')
         end
     end
+
+    it "shows other vending machines that carry and a count of snacks that that machine has" do
+        visit "/machines/#{@machine1.id}"
+          within "#machine-snack-#{@doritos.id}" do
+            expect(page).to have_content('Doritos')
+            expect(page).to have_content('$ 2.00')
+            expect(page).to have_content('Locations:')
+            expect(page).to have_content('Turing Basement')
+            expect(page).to have_content('Count of Snacks: 1, Average Price: $ 2.00')
+        end
+    end
 end
 
 
-
-# ### Example
-# ```Don's Mixed Drinks
-# Snacks
-# * White Castle Burger: $3.50
-# * Pop Rocks: $1.50
-# * Flaming Hot Cheetos: $2.50
-# Average Price: $2.50
-# ```
-# ​
-# ## Visiting a Snack Page
-# ​
-# ### Story
-# ​
-# ```
 # User Story 3 of 3
 # ​
 # As a visitor
