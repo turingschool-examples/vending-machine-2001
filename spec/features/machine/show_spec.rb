@@ -20,4 +20,10 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content(@snack2.name)
 
     end
+    it "I also see an average price for all of the snacks in that machine" do
+      visit "/machines/#{@dons.id}"
+
+      expect(page).to have_content("Average Price: $1.63")
+    end
 end
+
