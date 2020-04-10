@@ -10,4 +10,8 @@ class Machine < ApplicationRecord
     snacks.average(:price).to_f.round(2)
   end
 
+  def num_of_snack_types
+    snacks.count
+  end
+
 end

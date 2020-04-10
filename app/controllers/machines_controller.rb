@@ -1,4 +1,5 @@
 class MachinesController < ApplicationController
+
   def index
     @owner = Owner.find(params[:owner_id])
   end
@@ -6,4 +7,5 @@ class MachinesController < ApplicationController
   def show
     @machine = Machine.find(params[:id])
   end
+  
 end

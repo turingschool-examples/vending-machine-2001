@@ -1,0 +1,17 @@
+<h1><%= @snack.name %></h1>
+
+  <section class = "snack">
+    <h3>Price: <%= "$#{number_with_precision(@snack.price, precision: 2)}" %></h3>
+
+    <h3>Locations:</h3>
+    <ul>
+    <% @snack.machines.each do |machine| %>
+      <div id = "<%= "#{machine.id}" %>">
+          <li><%= "#{machine.location}" %> -
+            (<%= "#{machine.num_of_snack_types}" %> kinds of snack(s),
+            average price of <%= "$#{number_with_precision(machine.average_snack_price, precision: 2)}" %>)
+          </li>
+      </div>
+    <% end %>
+    </ul>
+  </section>
