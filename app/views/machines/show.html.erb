@@ -4,7 +4,11 @@
   <h3>Snacks</h3>
   <ul>
     <% @machine.snacks.each do |snack| %>
-      <li>Snack: <%= snack.name %>, Price: <%= snack.price %></li>
+      <li>Snack: <%= snack.name %>, Price: $<%= snack.price %></li>
     <% end %>
   </ul>
+</section>
+
+<section>
+  <p>Average Price of Snacks: $<%= @machine.average_snack_price %></p>
 </section>
