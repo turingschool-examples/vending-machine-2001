@@ -30,6 +30,6 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
 
 
     expect(page).to_not have_content(snack_3.name)
-    expect(page).to_not have_content(snack_2.price)
+    expect(page).to_not have_content(snack_3.price)
   end
 end
