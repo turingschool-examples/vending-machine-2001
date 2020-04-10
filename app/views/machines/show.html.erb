@@ -1,1 +1,9 @@
 <h1><%= @machine.location %> Vending Machine</h1>
+<section class="snack-list">
+<% @machine.snacks.each do |snack| %>
+  <%= snack.name %>: $<%=  snack.price %>
+<% end %>
+</section>
+<section class="snack-stats">
+  <%= @machine.snacks.averge_price %>
+</section>
