@@ -3,3 +3,4 @@
 <%@machine.snacks.each do |snack|%>
   <p><%=snack.name%> $<%=snack.price.round(3)%></p>
 <%end%>
+ <h4>Average Snack Price $<%=@machine.average_snack_price.round(2)%></h4>
