@@ -4,4 +4,5 @@
   <%= @machine.snacks.each do |snack| %>
     <h3><%= snack.name.upcase %>: $<%= snack.price %></h3>
   <% end %>
+  <h3>Average Snack Price: <%= @machine.average_snack_price %></h3>
 </section>
