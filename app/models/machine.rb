@@ -6,7 +6,8 @@ class Machine < ApplicationRecord
   has_many :snacks, through: :machine_snacks
 
   def average
-    self.snacks.average(:price).round(2)
+    average = self.snacks.average(:price)
+    average.round(2)
   end
 
 end
