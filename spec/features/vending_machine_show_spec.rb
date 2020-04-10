@@ -37,6 +37,6 @@ RSpec.describe "when I visit a machines show page", type: :feature do
 
     visit machine_path(machine)
 
-    expect(page).to have_content("Average Price: $2.00")
+    expect(page).to have_content("Average Price: $2.5")
   end
 end
