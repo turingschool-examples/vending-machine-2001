@@ -5,10 +5,21 @@ RSpec.describe "When a user visits the snack show page", type: :feature do
     sam = Owner.create!(name: "Sam's Snacks")
     jim = Owner.create!(name: "Jim's Jerkey")
     sam.machines.create!(location: "Don's Mixed Drinks")
-    sam.machines.first.snacks.create!(name: "Doritos", price: 2.99)
-    sam.machines.first.snacks.create!(name: "Cheetos", price: 1.99)
-    sam.machines.first.snacks.create!(name: "Fritos", price: 1.59)
+    sam.machines.create!(location: "Ricks Reststop")
+    jim.machines.create!(location: "Jims Jerkey")
 
+    snack1 = sam.machines.first.snacks.create!(name: "Doritos", price: 2.99)
+    snack2 = sam.machines.first.snacks.create!(name: "Cheetos", price: 1.99)
+
+    sam.machines.last.snacks << snack1
+    sam.machines.last.snacks << snack2
+    jim.machines.first.snacks << snack1
+
+    visit snack_path(snack1)
+    expect(current_path).to eq("/snacks/#{snack1.id}")
+    expect(page).to have_content("Don's Mixed Drinks")
+    expect(page).to have_content("Ricks Reststop")
+    expect(page).to have_content("Jims Jerkey")
 
 
   end
