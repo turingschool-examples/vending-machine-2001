@@ -11,7 +11,7 @@ RSpec.describe "As a visitor" do
       snack_2 = machine.snacks.create( name: "Milky Way",
                             price: 1.00)
 
-      visit "/machines/#{machine.id}"
+      visit machine_path(machine)
 
       within "#snack-#{snack_1.id}" do
         expect(page).to have_content("Snickers")
@@ -23,6 +23,21 @@ RSpec.describe "As a visitor" do
         expect(page).to have_content("1.00")
       end
 
+    end
+    it "I see an average price for all snacks in the machine" do
+      sam = Owner.create(name: "Sam's Snacks")
+      machine = sam.machines.create(location: "Turing Basement")
+
+      snack_1 = machine.snacks.create( name: "Snickers",
+                            price: 1.50)
+      snack_2 = machine.snacks.create( name: "Milky Way",
+                            price: 1.00)
+
+      visit machine_path(machine)
+
+      within "#average" do
+        expect(page).to have_content("1.25")
+      end
     end
   end
 end
