@@ -6,10 +6,13 @@
   <h3>Locations:</h3>
   <ul>
   <% @snack.machines.each do |machine| %>
-    <div id = "<%= "#{machine.id}" %>">
-        <li><%= "#{machine.location}" %> -
-          (<%= "#{machine.num_of_snack_types}" %> kinds of snack(s),
-          average price of <%= "$#{number_with_precision(machine.average_snack_price, precision: 2)}" %>)
+    <div id = "<%= machine.id %>">
+        <li><%= machine.location %> -
+          (<%= machine.num_of_snack_types %>
+          <%= "kind".pluralize(machine.num_of_snack_types) %>
+          of
+          <%= "snack".pluralize(machine.num_of_snack_types) %>
+          average price of $<%= number_with_precision(machine.average_snack_price, precision: 2) %>)
         </li>
     </div>
   <% end %>

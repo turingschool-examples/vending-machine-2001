@@ -47,11 +47,11 @@ RSpec.describe "As a visitor" do
       visit "/snacks/#{@snack1.id}"
 
       within("##{@dons.id}") do
-        expect(page).to have_content("3 kinds of snack(s)")
+        expect(page).to have_content("3 kinds of snacks")
       end
 
       within("##{@bobs.id}") do
-        expect(page).to have_content("1 kinds of snack(s)")
+        expect(page).to have_content("1 kind of snack")
       end
 
     end
