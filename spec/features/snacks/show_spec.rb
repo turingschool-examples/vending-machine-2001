@@ -18,6 +18,7 @@ RSpec.describe 'Snack show page', type: :feature do
     new_machine.snacks << [snack1, snack2, snack3, snack4, snack5]
 
     visit "/snacks/#{snack1.id}"
+    save_and_open_page
     expect(page).to have_content(snack1.name)
     expect(page).to have_content(snack1.price)
     expect(page).to have_content(dons.location)

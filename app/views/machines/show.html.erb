@@ -8,4 +8,4 @@
   <% end %>
 </ul>
 <br><br>
-<h3>Average Price: $<%= @machine.average_snack_price %>
+<h3>Average Price: <%= number_to_currency(@machine.average_snack_price) %>
