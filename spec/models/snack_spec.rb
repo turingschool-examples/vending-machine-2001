@@ -1,10 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe Machine, type: :model do
+RSpec.describe Snack, type: :model do
   before (:each) do
     @snack_1 = Snack.create(name: "White Castle Burger", price: 3.5)
     @snack_2 = Snack.create(name: "Pop Rocks", price: 1.14999999)
     @snack_3 = Snack.create(name: "Flaming Hot Cheetos", price: 2.0)
+  end
+
+  describe 'validations' do
+    it { should validate_presence_of :name }
+    it { should validate_presence_of :price }
+    it { should have_many :machine_snacks }
+    it { should have_many :machines }
   end
 
   describe 'methods' do
