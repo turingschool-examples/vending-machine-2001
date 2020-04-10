@@ -21,6 +21,7 @@ RSpec.describe "vending machine show page" do
             expect(page).to have_content(snack2.price)
             expect(page).to have_content(snack3.name)
             expect(page).to have_content(snack3.price)
+            # save_and_open_page
         end
         
         
