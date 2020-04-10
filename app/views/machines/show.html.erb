@@ -4,3 +4,7 @@
     <p><%= snack.name %>: $<%= snack.price %></p>
   <% end %>
 </section>
+
+<section class="average-price">
+  <p>Average Price: $<%= @machine.snacks.average_price.round(2) %></p>
+</section>
