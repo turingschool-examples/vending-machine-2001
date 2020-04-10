@@ -37,18 +37,18 @@ RSpec.describe 'Vending machines show page' do
             expect(page).to have_content('$ 3.00')
         end
     end
+
+    it "shows an average price for all snacks at that machine" do
+        visit "/machines/#{@machine1.id}"
+        within "#average-price" do
+            expect(page).to have_content('Average Price Per Snack')
+            expect(page).to have_content('$ 3.00')
+        end
+    end
 end
 
 
 
-# User Story 1 of 3
-# ​
-# As a visitor
-# When I visit a vending machine show page
-# I see the name of all of the snacks associated with that vending machine along with their price
-# ```
-# ​
-# ```
 # User Story 2 of 3
 # ​
 # As a visitor
