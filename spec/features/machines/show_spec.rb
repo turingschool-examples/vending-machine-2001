@@ -10,19 +10,18 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
 
   scenario 'they see the location of that machine' do
 
-    visit machine_path(dons)
+    visit machine_path(@dons)
 
     expect(page).to have_content("Don's Mixed Drinks Vending Machine")
   end
 
   it "shows a list of snacks in the machine along with their price" do
 
-    visit machine_path(dons)
+    visit machine_path(@dons)
 
     expect(page).to have_content("#{@gummies.name}")
     expect(page).to have_content("#{@gummies.price}")
   end
-
 end
 
 
