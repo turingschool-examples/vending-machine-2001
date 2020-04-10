@@ -1,1 +1,7 @@
 <h1><%= @snack.name %></h1>
+
+<section class="machine-list">
+  <% @snack.machines.each do |machine| %>
+    <p><%= machine.location %></p>
+  <% end %>
+</section>
