@@ -34,10 +34,24 @@ RSpec.describe "Machines-", type: :feature do
       end
     end
 
+    it "can't see info about snacks not inside a given machine" do
+      visit "machines/#{@machine_2.id}"
+
+      expect(page).to have_css("##{@snack_1.id}")
+      expect(page).to_not have_css("##{@snack_2.id}")
+      expect(page).to_not have_css("##{@snack_3.id}")
+    end
+
     it "can see the average price of all snacks in that machine" do
       visit "machines/#{@machine_1.id}"
 
       expect(page).to have_content("Average Snack Price: $2.50")
+    end
+
+    it "can see the average price of all snacks in a different machine" do
+      visit "machines/#{@machine_2.id}"
+      save_and_open_page
+      expect(page).to have_content("Average Snack Price: $3.50")
     end
   end
 end
