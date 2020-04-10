@@ -1,1 +1,11 @@
 <h1><%= @machine.location %> Vending Machine</h1>
+
+  <section class = "snacks">
+    <h3>Snacks:</h3>
+
+    <ol>
+    <% @machine.snacks.each do |snack| %>
+        <li><%= "#{snack.name}" %> - <%= "#{number_with_precision(snack.price, precision: 2)}" %></li>
+    <% end %>
+    </ol>
+  </section>
