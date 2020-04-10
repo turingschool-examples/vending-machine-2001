@@ -49,13 +49,6 @@ end
 
 
 
-# User Story 2 of 3
-# ​
-# As a visitor
-# When I visit a vending machine show page
-# I also see an average price for all of the snacks in that machine
-# ```
-# ​
 # ### Example
 # ```Don's Mixed Drinks
 # Snacks
