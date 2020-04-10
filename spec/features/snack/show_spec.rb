@@ -22,8 +22,10 @@ RSpec.describe "As a visitor" do
     end
     it "I see the name and price for snacks" do
 
-      expect(page).to have_content(@snack1.name)
-      expect(page).to have_content(@snack1.price)
+      within(".snack-header-info") do
+        expect(page).to have_content(@snack1.name)
+        expect(page).to have_content(@snack1.price)
+      end
 
     end
     it "I also see a list of locations that carry that snack and their avg price" do

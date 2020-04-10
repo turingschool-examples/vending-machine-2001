@@ -5,11 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-@owner = Owner.create(name: "Sam's Snacks")
-@dons  = @owner.machines.create(location: "Don's Mixed Drinks")
+owner1 = Owner.create(name: "Sam's Snacks")
+owner2 = Owner.create(name: "Bob B.")
 
-@snack1 = Snack.create(name: "Hot Cheetos", price: 1.50)
-@snack2 = Snack.create(name: "Takis", price: 1.75)
+dons  = owner1.machines.create(location: "Don's Mixed Drinks")
+bobs  = owner2.machines.create(location: "Bob's Corner Store")
 
-@dons.snacks << @snack1
-@dons.snacks << @snack2
+snack1 = Snack.create(name: "Hot Cheetos", price: 1.50)
+snack2 = Snack.create(name: "Takis", price: 1.75)
+snack3 = Snack.create(name: "Hot Fries", price: 1.25)
+
+dons.snacks << [snack1, snack2, snack3]
+bobs.snacks << snack1
