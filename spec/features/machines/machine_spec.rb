@@ -50,7 +50,7 @@ RSpec.describe "Machines-", type: :feature do
 
     it "can see the average price of all snacks in a different machine" do
       visit "machines/#{@machine_2.id}"
-      save_and_open_page
+      
       expect(page).to have_content("Average Snack Price: $3.50")
     end
   end
