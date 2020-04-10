@@ -4,6 +4,9 @@ RSpec.describe Machine, type: :model do
   describe 'validations' do
     it { should validate_presence_of :location }
     it { should belong_to :owner }
+  end
+
+  describe 'relationships' do
     it { should have_many :machine_snacks }
     it { should have_many :snacks }
   end
@@ -31,7 +34,6 @@ RSpec.describe Machine, type: :model do
 
       expect(dons.num_of_snack_types).to eq(3)
     end
-
   end
 
 end
