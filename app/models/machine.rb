@@ -12,4 +12,8 @@ class Machine < ApplicationRecord
     end
     (all_prices.sum.to_f / all_prices.length).round(2)
   end
+
+  def snack_count
+    snacks.count
+  end
 end
