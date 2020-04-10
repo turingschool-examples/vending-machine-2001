@@ -17,20 +17,7 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
     expect(page).to have_content(lara_bar.name)
     expect(page).to have_content(lara_bar.price)
     expect(page).to_not have_content(fig_newton.name)
+
+    expect(page).to have_content("Average Price: $#{dons.average_snack_price}")
   end
 end
-
-
-As a visitor
-When I visit a vending machine show page
-I also see an average price for all of the snacks in that machine
-```
-
-### Example
-```Don's Mixed Drinks
-Snacks
-* White Castle Burger: $3.50
-* Pop Rocks: $1.50
-* Flaming Hot Cheetos: $2.50
-Average Price: $2.50
-``
