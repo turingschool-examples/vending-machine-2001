@@ -23,6 +23,24 @@ RSpec.describe "vending machine show page" do
             expect(page).to have_content(snack3.price)
             # save_and_open_page
         end
+
+        it "can see average price for all items" do
+
+            bob = Owner.create(name: "Bob")
+            vending1 = bob.machines.create(location: "Bowling Alley")
+            snack1 = Snack.create(name: "Doritos", price: 2)
+            snack2 = Snack.create(name: "Snickers", price: 4)
+            snack3 = Snack.create(name: "Cookies", price: 6)
+            MachineSnack.create(machine: vending1, snack: snack1, amount: 1)
+            MachineSnack.create(machine: vending1, snack: snack2, amount: 2)
+            MachineSnack.create(machine: vending1, snack: snack3, amount: 3)
+
+            visit machine_path(vending1)
+# save_and_open_page
+            expect(page).to have_content("Average Snack Price: $4.00") 
+            
+        end
+        
         
         
     end
