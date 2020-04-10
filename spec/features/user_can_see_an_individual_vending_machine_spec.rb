@@ -34,7 +34,6 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
     hot_cheetos = dons.snacks.create(name: "Flaming Hot Cheetos", price: 2.5)
 
     visit machine_path(dons)
-    save_and_open_page
 
     within('#statistics') do
       expect(page).to have_content("Average Price: $2.50")
