@@ -4,7 +4,7 @@
   <p>Locations:</p>
   <ul>
     <% @snack.machines.each do |machine| %>
-    <%= machine.location %>
+    <li><%= machine.location %> (<%= machine.snacks.length %> kinds of snacks, average price of $<%= machine.average_snack_price.to_f.round(2) %>)</li>
     <% end %>
   </ul>
 </section>
