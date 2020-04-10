@@ -30,17 +30,3 @@ RSpec.describe 'As a visitor' do
     expect(page).to have_content("Average Price: $4.33")
   end
 end
-
-# As a visitor
-# When I visit a vending machine show page
-# I also see an average price for all of the snacks in that machine
-# ```
-# ​
-# ### Example
-# ```Don's Mixed Drinks
-# Snacks
-# * White Castle Burger: $3.50
-# * Pop Rocks: $1.50
-# * Flaming Hot Cheetos: $2.50
-# Average Price: $2.50
-# ```
