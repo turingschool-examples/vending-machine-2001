@@ -8,5 +8,5 @@
         <li><%= "#{snack.name}" %> - <%= "$#{number_with_precision(snack.price, precision: 2)}" %></li>
     <% end %>
     </ol>
-    <p>Average Price: $<%= @machine.average_snack_price %></p>
+    <p>Average Price: $<%= "#{number_with_precision(@machine.average_snack_price, precision: 2)}" %></p>
   </section>
