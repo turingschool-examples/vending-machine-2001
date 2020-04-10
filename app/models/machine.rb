@@ -6,7 +6,11 @@ class Machine < ApplicationRecord
   has_many :snacks, through: :machine_snacks
 
   def average_snack_price
+    if snacks.empty?
+      0
+    else
     snacks.average(:price)
+    end
   end
 
   def snack_counter
