@@ -37,7 +37,7 @@ RSpec.describe "Machines", type: :feature do
     it "can see the average price of all snacks in that machine" do
       visit "machines/#{@machine_1.id}"
 
-      expect(page).to have_content("Average Snack Price: 2.5")
+      expect(page).to have_content("Average Snack Price: $2.50")
     end
   end
 end

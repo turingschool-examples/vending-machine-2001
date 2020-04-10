@@ -7,4 +7,10 @@ class Machine < ApplicationRecord
   def average_snack_price
     snacks.average(:price)
   end
+
+  def display_average_snack_price
+    if average_snack_price
+      "$#{sprintf('%.2f', average_snack_price)}"
+    end
+  end
 end
