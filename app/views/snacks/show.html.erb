@@ -1,5 +1,5 @@
 <h1><%= @snack.name %></h1>
-<p>Price: <%= @snack.price %></>
+<p>Price: $<%= @snack.price %></>
 <p>Locations</p>
 <% @snack.machines.each do |machine| %>
   <p><%=machine.location%> (<%=machine.snacks.length%> kinds of snacks, average price of $<%=machine.average%>)</p>
