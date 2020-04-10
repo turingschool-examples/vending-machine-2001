@@ -34,7 +34,3 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
     expect(page).to have_content("2")
   end
 end
-
-# As a visitor
-# When I visit a vending machine show page
-# I also see an average price for all of the snacks in that machine

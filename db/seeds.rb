@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+@owner = Owner.create(name: "Sam's Snacks")
+@dons  = @owner.machines.create(location: "Don's Mixed Drinks")
+@gummies  = @dons.snacks.create(name: "Haribo Gummies", price: 1)
+@crab_chips  = @dons.snacks.create(name: "Utz Crab Chips", price: 3)
