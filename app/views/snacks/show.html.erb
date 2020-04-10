@@ -1,0 +1,8 @@
+<seciton id="description">
+  <h1><%= @snack.name %></h1>
+  <%= '%.2f' % @snack.price.round(2) %>
+</section>
+
+<%= @snack.machines.each do |machine| %>
+  <%= "#{machine.location} (#{machine.snacks.length} kinds of snacks, average price of $%.2f)" % machine.average_snack_price.to_f.round(2) %>
+<% end %>
