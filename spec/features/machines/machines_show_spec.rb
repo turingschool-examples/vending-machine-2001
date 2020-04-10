@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Vending machines show page' do
     before(:each) do
-        @machine1 = Machine.create!(location: "Don's Mixed Drinks")
+        @owner = Owner.create!(name: "John Preston")
+        @machine1 = @owner.machines.create!(location: "Don's Mixed Drinks")
         @doritos = Snack.create!(name: "Doritos", price: 2.0)
         @cheetos = Snack.create!(name: 'Cheetos', price: 3.0)
         @donuts = Snack.create!(name: 'DoNuts', price: 4.0)
@@ -16,7 +17,7 @@ RSpec.describe 'Vending machines show page' do
 
     it "can show all machine snacks" do
        visit "/machines/#{@machine1.id}"
-
+       expect(page).to have_content("Don's Mixed Drinks") 
         within "#machine-snack-#{@doritos.id}" do
             expect(page).to have_content('Doritos')
             expect(page).to have_content('$ 2.00')
