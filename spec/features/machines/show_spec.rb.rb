@@ -5,7 +5,7 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
 
   @owner = Owner.create(name: "Sam's Snacks")
   @dons  = @owner.machines.create(location: "Don's Mixed Drinks")
-  @gummies  = @owner.snacks.create(location: "Don's Mixed Drinks")
+  @gummies  = @dons.snacks.create(name: "Gummies", price: 2)
   end
 
   scenario 'they see the location of that machine' do
