@@ -18,7 +18,7 @@ RSpec.describe "Snacks-", type: :feature do
   describe "As a User when I visit the show page I " do
     it "can see the name, price, locations, avg price, and item count" do
         visit "/snacks/#{@snack_1.id}"
-
+          
         expect(page).to have_content("Price: $3.50")
         within "#location_#{@machine_1.id}" do
           expect(page).to have_content("Union Station (3 kinds of snacks, average price of $2.50)")

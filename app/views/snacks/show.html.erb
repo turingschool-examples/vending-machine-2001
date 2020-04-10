@@ -5,7 +5,6 @@
 <section>
   <% @snack.machines.each do |machine| %>
     <div id= <%= "location_#{machine.id}" %>>
-      ("Union Station (3 kinds of snacks, average price of $2.50)
       <%= "#{machine.location} (#{pluralize(machine.snack_count, 'kind')} of snacks, average price of #{machine.display_average_snack_price})" %>
       <br>
     </div>

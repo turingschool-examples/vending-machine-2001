@@ -31,5 +31,10 @@ RSpec.describe Machine, type: :model do
       expect(@machine_1.display_average_snack_price).to eq("$2.50")
       expect(@machine_2.display_average_snack_price).to eq("$3.50")
     end
+
+    it "#snack_count" do
+      expect(@machine_1.snack_count).to eq(3)
+      expect(@machine_2.snack_count).to eq(1)
+    end
   end
 end
