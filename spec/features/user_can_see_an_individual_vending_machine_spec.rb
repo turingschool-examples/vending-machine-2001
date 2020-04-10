@@ -33,4 +33,18 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
       expect(page).to have_content("$#{twix.price}")
     end
   end
+  scenario 'they can see the the average price of all snacks in that machine' do
+    owner = Owner.create(name: "Sam's Snacks")
+    dons  = owner.machines.create(location: "Don's Mixed Drinks")
+    funyons  = dons.snacks.create(name: "Funyons", price: "1.20")
+    canyon  = dons.snacks.create(name: "Boulder Canyon Sea Salt Chips", price: "2.00")
+    twix  = dons.snacks.create(name: "Twix", price: "1.50")
+
+    sum = dons.snacks.sum { |snack| snack.price }
+    average = (sum/dons.snacks.size).round(2)
+
+    visit machine_path(dons)
+
+    expect(page).to have_content("Average Price: $#{average}")
+  end
 end
