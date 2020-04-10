@@ -9,8 +9,8 @@ RSpec.describe "When a user visits the vending machine show page", type: :featur
 
     visit machine_path(dons)
 
-    expect(page).to have_content("cheese sticks: $1.50")
-    expect(page).to have_content("Chips n Dip: $3.00")
+    expect(page).to have_content("cheese sticks: $1.5")
+    expect(page).to have_content("Chips n Dip: $3")
   end
 
   scenario "they see a list of vending machine snacks" do
@@ -22,7 +22,7 @@ RSpec.describe "When a user visits the vending machine show page", type: :featur
 
     visit machine_path(dons)
 
-    expect(page).to have_content("Average Price: $2.50")
+    expect(page).to have_content("Average Price: $2.5")
 
   end
 end
