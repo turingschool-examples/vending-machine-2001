@@ -7,6 +7,7 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
 
     visit machine_path(dons)
 
+    expect(current_path).to eq("/machines/#{dons.id}")
     expect(page).to have_content("Don's Mixed Drinks Vending Machine")
   end
 end
